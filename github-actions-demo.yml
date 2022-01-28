@@ -1,0 +1,15 @@
+# Using new laptop
+on:
+  push:
+    branches: ["master"]
+
+jobs:
+  run-npm-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: npm install and build webpack
+        uses: actions/setup-node@v2
+      - run: npm config set registry https://registry.npmjs.org/
+      - run: npm install
+      - run: npm run build
